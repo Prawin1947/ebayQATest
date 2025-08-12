@@ -7,6 +7,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import util.config.BasicIbtTest;
 import util.constants.Constants;
 import util.constants.Elements;
@@ -52,12 +53,7 @@ public class BasicSteps{
     @And("the verify the {string} items are added to the cart")
     public void verifyTheItemsAddedToTheCart(String numberOfItems) throws Exception {
         String value = basicIntTest.element.getAttributeValue(Elements.CART, Constants.CART_LABEL);
-        if(value.contains(numberOfItems)){
-            System.out.println("PASS");
-        }else{
-            System.out.println("FAIL");
-        }
-        // Due to some technical issue My IDE is not identifying testNG
+        Assert.assertEquals(value.contains(numberOfItems),true);
     }
 
 
